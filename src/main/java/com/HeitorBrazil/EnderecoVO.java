@@ -9,8 +9,71 @@ public class EnderecoVO {
     private String uf;
 
     public EnderecoVO(EnderecoAPI api) {
-        if (cep.length() > 8) {
-            throw new CepErradoException("Houve um erro no cep inserido");
-        }
+        setCep(api.cep());
+        setLogradouro(!api.logradouro().isEmpty() ? api.logradouro() : "N/A");
+        setComplemento(!api.complemento().isEmpty() ? api.complemento() : "N/A");
+        setBairro(!api.bairro().isEmpty() ? api.bairro() : "N/A");
+        setLocalidade(!api.localidade().isEmpty() ? api.localidade() : "N/A");
+        setUf(!api.uf().isEmpty() ? api.uf() : "N/A");
+    }
+
+    @Override
+    public String toString() {
+        return "---Endereco---" +
+                "\nCEP: " + cep +
+                "\nLogradouro: " + logradouro +
+                "\nComplemento: " + complemento +
+                "\nBairro: " + bairro +
+                "\nLocalidade: " + localidade +
+                "\nUf: " + uf;
+    }
+
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public String getLogradouro() {
+        return logradouro;
+    }
+
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
+    }
+
+    public String getComplemento() {
+        return complemento;
+    }
+
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String getLocalidade() {
+        return localidade;
+    }
+
+    public void setLocalidade(String localidade) {
+        this.localidade = localidade;
+    }
+
+    public String getUf() {
+        return uf;
+    }
+
+    public void setUf(String uf) {
+        this.uf = uf;
     }
 }
